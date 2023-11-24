@@ -41,6 +41,12 @@ func main() {
 
 	clientDb := database.NewClientDB(db)
 	accountDb := database.NewAccountDB(db)
+	transactionDB := database.NewTransactionDB(db)
+
+	// init database
+	clientDb.Init();
+	accountDb.Init();
+	transactionDB.Init();
 
 	ctx := context.Background()
 	uow := uow.NewUow(ctx, db)

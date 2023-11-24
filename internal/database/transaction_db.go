@@ -17,6 +17,13 @@ func NewTransactionDB(db *sql.DB) *TransactionDB {
     }
 }
 
+func (c *TransactionDB) Init() {
+    _, err := c.DB.Exec("Create table IF NOT EXISTS transactions (id varchar(255), account_id_from varchar(255), account_id_to varchar(255), amount int, created_at date)")
+    if err != nil {
+        panic(err)
+    }
+}
+
 func (t *TransactionDB) Create(transaction *entity.Transaction) error {
     stmt, err := t.DB.Prepare("INSERT INTO transactions (id, account_id_from, account_id_to, amount, created_at) VALUES (?, ?, ?, ?, ?)")
     if err != nil {

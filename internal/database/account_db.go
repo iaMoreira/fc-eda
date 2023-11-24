@@ -16,6 +16,13 @@ func NewAccountDB(db *sql.DB) *AccountDB {
 	}
 }
 
+func (c *AccountDB) Init() {
+    _, err := c.DB.Exec("Create table IF NOT EXISTS accounts (id varchar(255), client_id varchar(255), balance int, created_at date)")
+    if err != nil {
+        panic(err)
+    }
+}
+
 func (a *AccountDB) FindByID(id string) (*entity.Account, error) {
 	var account entity.Account
 	var client entity.Client

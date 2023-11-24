@@ -1,19 +1,19 @@
 
-POST http://localhost:3000/clients HTTP/1.1
+POST http://localhost:8080/clients HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "John Doe",
-    "email": "john@j.com"
+    "name": "John Smith",
+    "email": "js@j.com"
 }
 
 ###
 
-POST http://localhost:3000/accounts HTTP/1.1
+POST http://localhost:8080/accounts HTTP/1.1
 Content-Type: application/json
 
 {
-    "client_id": "87495b95-1c7f-4038-ae55-ab36ed6a9411"
+    "client_id": "18597e65-2b8c-4e7f-bee8-beb3e96f9016"
 }
 
 ###
@@ -22,7 +22,11 @@ POST http://localhost:8080/transactions HTTP/1.1
 Content-Type: application/json
 
 {
-    "account_id_from": "f8df753c-3b58-43aa-8016-12aaa4f1ea3e",
-    "account_id_to": "0216ea38-524f-4e85-8743-d484a8f7538e",
-    "amount": 1
+    "account_id_from": "bcea8ac9-dc81-4dfd-883d-f7e8274f758f",
+    "account_id_to": "bd604735-bcfc-43ff-a5c7-7396addadc52",
+    "amount": 100       
 }
+
+### 
+
+GET http://localhost:3003/balances/bcea8ac9-dc81-4dfd-883d-f7e8274f758f HTTP/1.1

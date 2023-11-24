@@ -9,6 +9,16 @@ services:
     ports:
       - 8080:8080
 
+  balanceapp:
+    build:
+      context: .
+      dockerfile: "./balance.Dockerfile"
+    platform: linux/amd64
+    volumes:
+      - .:/app
+    ports:
+      - 3003:3003
+
   mysql:
     image: mysql:5.7
     platform: linux/amd64
